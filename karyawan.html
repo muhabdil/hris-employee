@@ -1,17 +1,11 @@
 <!doctype html>
-<!-- 
-* Bootstrap Simple Admin Template
-* Version: 2.1
-* Author: Alexis Luna
-* Website: https://github.com/alexis-luna/bootstrap-simple-admin-template
--->
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Karyawan | PT Cooking Healty Indonesia</title>
+    <title>Profil Karyawan | RKP Manajemen</title>
     <link rel="icon" href="assets/img/rkp.jpeg" type="image/png">
     <link href="assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
     <link href="assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
@@ -19,6 +13,74 @@
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/master.css" rel="stylesheet">
     <link href="assets/vendor/flagiconcss/css/flag-icon.min.css" rel="stylesheet">
+    <style>
+        .profile-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .profile-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+        .profile-card .card-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 15px 15px 0 0 !important;
+            border: none;
+        }
+        .info-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s ease;
+        }
+        .info-item:hover {
+            background-color: #f8f9fa;
+        }
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        .info-label {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 0.25rem;
+        }
+        .info-value {
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+        .btn-edit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 25px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-edit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        .status-badge {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -40,13 +102,11 @@
                 </li>
                 <span class="submenu-pinggir">Menu Karyawan</span>
                 <li>
-                    <a href="karyawan.html"><i class="fas fa-users"></i>Profil Karyawan</a>
+                    <a href="karyawan.html" class="active"><i class="fas fa-users"></i>Profil Karyawan</a>
                 </li>
-              
-               
-                <span class="submenu-pinggir">Menu Absensi</span>
+                <span class="submenu-pinggir">Menu Presensi</span>
                 <li>
-                    <a href="absensi.html"><i class="fas fa-calendar-alt"></i> Absensi</a>
+                    <a href="presensi.html"><i class="fas fa-calendar-alt"></i> Presensi</a>
                 </li>
                 <li>
                     <a href="izin.html"><i class="fas fa-briefcase-medical"></i> Izin</a>
@@ -56,6 +116,7 @@
                 </li>
             </ul>
         </nav>
+        
         <div id="body" class="active">
             <!-- navbar navigation component -->
             <nav class="navbar navbar-expand-lg navbar-white bg-white">
@@ -84,41 +145,129 @@
                 </div>
             </nav>
             <!-- end of navbar navigation -->
+            
             <div class="content">
                 <div class="container">
-                    <div class="page-title">
-                        <h3></h3>
+                    <!-- Profile Header -->
+                    <div class="profile-header text-center">
+                        <div class="row align-items-center">
+                            <div class="col-md-3">
+                                <img src="assets/img/ava.jpg" alt="Profile Picture" class="rounded-circle profile-avatar">
+                            </div>
+                            <div class="col-md-6">
+                                <h2 class="mb-2">Muhammad Abdillah</h2>
+                                <p class="mb-2">Marketing Intern</p>
+                                <span class="status-badge">
+                                    <i class="fas fa-circle text-success me-1"></i>Active Employee
+                                </span>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-light btn-edit" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                                    <i class="fas fa-edit me-2"></i>Edit Profile
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row mb-3">
-                        
-                    </div>
+
                     <div class="row">
-                        <div class="col-md-12 col-lg-12">
-                            <div class="card">
+                        <!-- Personal Information -->
+                        <div class="col-lg-6">
+                            <div class="card profile-card">
                                 <div class="card-header">
-                                    <div class="d-flex justify-content-between">
-                                        <h5>Profil Karyawan</h5>
-                                        
-                                        </button>
+                                    <h5 class="mb-0"><i class="fas fa-user me-2"></i>Informasi Personal</h5>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="info-item">
+                                        <div class="info-label">Nama Lengkap</div>
+                                        <div class="info-value">Muhammad Abdillah</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Email</div>
+                                        <div class="info-value">muhammad.abdillah@rkp.com</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">No. Telepon</div>
+                                        <div class="info-value">08123456789</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Alamat</div>
+                                        <div class="info-value">Kampung Pandan, Jakarta Selatan</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Tanggal Lahir</div>
+                                        <div class="info-value">15 Januari 1998</div>
                                     </div>
                                 </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover" id="jobTable">
-                                            <div class="row">
-                        <div class="col-md-12 col-lg-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5>Nama: Muhammad Abdillah</h5>
-                                    <p>Jabatan: Internship</p>
-                                    <p>Divisi: Marketing</p>
-                                    <p>Email: Muhammad Abdillah@hris.com</p>
-                                    <p>No. Telp: 08123456789</p>
+                            </div>
+                        </div>
+
+                        <!-- Employment Information -->
+                        <div class="col-lg-6">
+                            <div class="card profile-card">
+                                <div class="card-header">
+                                    <h5 class="mb-0"><i class="fas fa-briefcase me-2"></i>Informasi Pekerjaan</h5>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="info-item">
+                                        <div class="info-label">ID Karyawan</div>
+                                        <div class="info-value">MARK01</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Jabatan</div>
+                                        <div class="info-value">Internship</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Divisi</div>
+                                        <div class="info-value">Marketing</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Tanggal Bergabung</div>
+                                        <div class="info-value">1 Februari 2025</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Status</div>
+                                        <div class="info-value">
+                                            <span class="badge bg-success">Aktif</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                                                
+
+                    <!-- Additional Information -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card profile-card">
+                                <div class="card-header">
+                                    <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Informasi Tambahan</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="info-item">
+                                                <div class="info-label">Pendidikan Terakhir</div>
+                                                <div class="info-value">S1 Manajemen</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="info-item">
+                                                <div class="info-label">Keahlian</div>
+                                                <div class="info-value">Digital Marketing, Social Media</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="info-item">
+                                                <div class="info-label">Kontak Darurat</div>
+                                                <div class="info-value">081234567890 (Ibu Siti)</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="info-item">
+                                                <div class="info-label">NPWP</div>
+                                                <div class="info-value">12.345.678.9-123.000</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -127,256 +276,173 @@
                 </div>
             </div>
 
-            <!-- Add Job Modal -->
-            <div class="modal fade" id="addJobModal" tabindex="-1" aria-labelledby="addJobModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+            <!-- Edit Profile Modal -->
+            <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="addJobModalLabel">Penambahan Karyawan</h5>
+                            <h5 class="modal-title" id="editProfileModalLabel">
+                                <i class="fas fa-edit me-2"></i>Edit Profil Karyawan
+                            </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="addJobForm">
-                                <div class="mb-3">
-                                    <label for="kodeJabatan" class="form-label">Kode</label>
-                                    <input type="text" class="form-control" id="kodeJabatan" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="namaJabatan" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" id="namaJabatan" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="alamat" class="form-label">Alamat</label>
-                                    <input type="text" class="form-control" id="alamat" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="jabatan" class="form-label">Jabatan</label>
-                                    <input type="text" class="form-control" id="jabatan" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" required>
+                            <form id="editProfileForm">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="namaLengkap" class="form-label">Nama Lengkap</label>
+                                            <input type="text" class="form-control" id="namaLengkap" value="Muhammad Abdillah" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="email" value="muhammad.abdillah@rkp.com" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="telepon" class="form-label">No. Telepon</label>
+                                            <input type="tel" class="form-control" id="telepon" value="08123456789" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="tanggalLahir" class="form-label">Tanggal Lahir</label>
+                                            <input type="date" class="form-control" id="tanggalLahir" value="1998-01-15" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label for="alamat" class="form-label">Alamat</label>
+                                            <textarea class="form-control" id="alamat" rows="3" required>Kampung Pandan, Jakarta Selatan</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="pendidikan" class="form-label">Pendidikan Terakhir</label>
+                                            <input type="text" class="form-control" id="pendidikan" value="S1 Manajemen" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="keahlian" class="form-label">Keahlian</label>
+                                            <input type="text" class="form-control" id="keahlian" value="Digital Marketing, Social Media" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="kontakDarurat" class="form-label">Kontak Darurat</label>
+                                            <input type="text" class="form-control" id="kontakDarurat" value="081234567890 (Ibu Siti)" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="npwp" class="form-label">NPWP</label>
+                                            <input type="text" class="form-control" id="npwp" value="12.345.678.9-123.000" required>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="saveJobBtn">Save</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Edit Job Modal -->
-            <div class="modal fade" id="editJobModal" tabindex="-1" aria-labelledby="editJobModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="editJobModalLabel">Ubah Data karyawan</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="editJobForm">
-                                <input type="hidden" id="editJobId">
-                                <div class="mb-3">
-                                    <label for="editKodeJabatan" class="form-label">Kode</label>
-                                    <input type="text" class="form-control" id="editKodeJabatan" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editNamaJabatan" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" id="editNamaJabatan" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editEmail" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="editEmail" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editAlamat" class="form-label">Alamat</label>
-                                    <input type="text" class="form-control" id="editAlamat" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editJabatan" class="form-label">Jabatan</label>
-                                    <input type="text" class="form-control" id="editJabatan" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editUsername" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="editUsername" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="editPassword" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="editPassword" required>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="updateJobBtn">Update</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                <i class="fas fa-times me-1"></i>Batal
+                            </button>
+                            <button type="button" class="btn btn-primary" id="saveProfileBtn">
+                                <i class="fas fa-save me-1"></i>Simpan Perubahan
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
     </div>
+    
     <footer class="footer text-center">
         <p class="text-secondary">2025 © RKP Manajemen</p>
     </footer>
+    
     <script src="assets/vendor/jquery/jquery.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/datatables/datatables.min.js"></script>
-    <script src="assets/js/initiate-datatables.js"></script>
-    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="assets/js/script.js"></script>
+    
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Save profile changes
+            document.getElementById('saveProfileBtn').addEventListener('click', function () {
+                // Get form data
+                const formData = {
+                    namaLengkap: document.getElementById('namaLengkap').value,
+                    email: document.getElementById('email').value,
+                    telepon: document.getElementById('telepon').value,
+                    tanggalLahir: document.getElementById('tanggalLahir').value,
+                    alamat: document.getElementById('alamat').value,
+                    pendidikan: document.getElementById('pendidikan').value,
+                    keahlian: document.getElementById('keahlian').value,
+                    kontakDarurat: document.getElementById('kontakDarurat').value,
+                    npwp: document.getElementById('npwp').value
+                };
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Sample job data for testing
-    let jobData = [
-        {
-            kodeJabatan: 'MARK01',
-            namaJabatan: 'Muhammad Abdillah',
-            email: 'MUHAMMADABDILLAH@gmail.com',
-            alamat: 'Kp Pandan',
-            Divisi: 'Mager',
-            username: 'BayuCook',
-            password: 'admin123'
-        },
-        {
-            kodeJabatan: 'KAR002',
-            namaJabatan: 'Siti',
-            email: 'Siti@Cooking.co.id',
-            alamat: 'Kp Aren',
-            jabatan: 'Assistant',
-            username: 'SitiKing',
-            password: 'user123'
-        }
-    ];
-
-    const jobTableBody = document.querySelector('#jobTable tbody');
-    const entriesDropdown = document.getElementById('entries');
-    const searchInput = document.getElementById('searchInput');
-
-    // Render table with initial data
-    renderTable();
-
-    // Add Job
-    document.getElementById('saveJobBtn').addEventListener('click', function () {
-        const newJob = getFormData('addJobForm');
-        jobData.push(newJob);
-        renderTable();
-        resetForm('addJobForm');
-        bootstrap.Modal.getInstance(document.getElementById('addJobModal')).hide();
-    });
-
-    // Edit Job
-    document.getElementById('updateJobBtn').addEventListener('click', function () {
-        const jobId = document.getElementById('editJobId').value;
-        const updatedJob = getFormData('editJobForm');
-        jobData[jobId] = updatedJob;
-        renderTable();
-        bootstrap.Modal.getInstance(document.getElementById('editJobModal')).hide();
-    });
-
-    // Search and Filter
-    searchInput.addEventListener('input', renderTable);
-    entriesDropdown.addEventListener('change', renderTable);
-
-    // Function to render table
-    function renderTable() {
-        jobTableBody.innerHTML = '';
-        const searchQuery = searchInput.value.toLowerCase();
-        const entriesToShow = parseInt(entriesDropdown.value);
-
-        // Filter and display jobs based on search and entries selected
-        const filteredJobs = jobData.filter((job) => {
-            return Object.values(job).some(value => value.toLowerCase().includes(searchQuery));
-        }).slice(0, entriesToShow);
-
-        filteredJobs.forEach((job, index) => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${index + 1}</td>
-                <td>${job.kodeJabatan}</td>
-                <td>${job.namaJabatan}</td>
-                <td>${job.email}</td>
-                <td>${job.alamat}</td>
-                <td>${job.jabatan}</td>
-                <td>${job.username}</td>
-                <td>${job.password}</td>
-                <td>
-                    <button class="btn btn-sm btn-warning editBtn" data-id="${index}">Edit</button>
-                    <button class="btn btn-sm btn-danger deleteBtn" data-id="${index}">Delete</button>
-                </td>
-            `;
-            jobTableBody.appendChild(row);
-        });
-
-        addTableEventListeners();
-    }
-
-    // Function to Get Form Data
-    function getFormData(formId) {
-        const formData = {};
-        const form = document.getElementById(formId);
-        Array.from(form.elements).forEach(element => {
-            if (element.id) formData[element.id] = element.value;
-        });
-        return formData;
-    }
-
-    // Reset Form
-    function resetForm(formId) {
-        const form = document.getElementById(formId);
-        form.reset();
-    }
-
-    // Add Table Event Listeners for Edit/Delete
-    function addTableEventListeners() {
-        document.querySelectorAll('.editBtn').forEach(button => {
-            button.addEventListener('click', function () {
-                const jobId = this.getAttribute('data-id');
-                const job = jobData[jobId];
-                populateEditModal(job, jobId);
+                // Update profile display (in a real application, this would be sent to server)
+                updateProfileDisplay(formData);
+                
+                // Close modal
+                bootstrap.Modal.getInstance(document.getElementById('editProfileModal')).hide();
+                
+                // Show success message
+                showSuccessMessage('Profil berhasil diperbarui!');
             });
+
+            function updateProfileDisplay(data) {
+                // Update the profile information on the page
+                document.querySelector('.profile-header h2').textContent = data.namaLengkap;
+                
+                // Update info values
+                const infoValues = document.querySelectorAll('.info-value');
+                infoValues[0].textContent = data.namaLengkap; // Nama Lengkap
+                infoValues[1].textContent = data.email; // Email
+                infoValues[2].textContent = data.telepon; // Telepon
+                infoValues[3].textContent = data.alamat; // Alamat
+                
+                // Format and update birth date
+                const birthDate = new Date(data.tanggalLahir);
+                const formattedDate = birthDate.toLocaleDateString('id-ID', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+                infoValues[4].textContent = formattedDate; // Tanggal Lahir
+                
+                // Update additional information
+                const additionalInfo = document.querySelectorAll('.row .info-value');
+                additionalInfo[additionalInfo.length - 4].textContent = data.pendidikan; // Pendidikan
+                additionalInfo[additionalInfo.length - 3].textContent = data.keahlian; // Keahlian
+                additionalInfo[additionalInfo.length - 2].textContent = data.kontakDarurat; // Kontak Darurat
+                additionalInfo[additionalInfo.length - 1].textContent = data.npwp; // NPWP
+            }
+
+            function showSuccessMessage(message) {
+                // Create and show a success alert
+                const alert = document.createElement('div');
+                alert.className = 'alert alert-success alert-dismissible fade show position-fixed';
+                alert.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+                alert.innerHTML = `
+                    <i class="fas fa-check-circle me-2"></i>${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                document.body.appendChild(alert);
+                
+                // Auto remove after 3 seconds
+                setTimeout(() => {
+                    if (alert.parentNode) {
+                        alert.parentNode.removeChild(alert);
+                    }
+                }, 3000);
+            }
         });
-
-        document.querySelectorAll('.deleteBtn').forEach(button => {
-            button.addEventListener('click', function () {
-                const jobId = this.getAttribute('data-id');
-                if (confirm('apakah anda yakin, ingin menghapus data ini?')) {
-                    jobData.splice(jobId, 1);
-                    renderTable();
-                }
-            });
-        });
-    }
-
-    // Populate Edit Modal with Data
-    function populateEditModal(job, jobId) {
-        document.getElementById('editJobId').value = jobId;
-        document.getElementById('editKodeJabatan').value = job.kodeJabatan;
-        document.getElementById('editNamaJabatan').value = job.namaJabatan;
-        document.getElementById('editEmail').value = job.email;
-        document.getElementById('editAlamat').value = job.alamat;
-        document.getElementById('editJabatan').value = job.jabatan;
-        document.getElementById('editUsername').value = job.username;
-        document.getElementById('editPassword').value = job.password;
-        new bootstrap.Modal(document.getElementById('editJobModal')).show();
-    }
-});
-
-
-    
     </script>
-    
 </body>
 
 </html>
